@@ -5,3 +5,49 @@ requires-python = ">=3.13"
 dependencies = [
     "fastmcp>=2.12.4",
 ]
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+# See https://docs.astral.sh/ruff/rules/ for all rules
+select = [
+    "E",  # pycodestyle errors
+    "F",  # pyflakes
+    "W",  # pycodestyle warnings
+    "I",  # isort
+]
+ignore = ["E501"] # Ignore line-too-long errors
+
+[tool.pyright]
+include = ["**/*.py"]
+exclude = ["**/node_modules",
+    "**/.bzr",
+    "**/.direnv",
+    "**/.eggs",
+    "**/.git",
+    "**/.hg",
+    "**/.mypy_cache",
+    "**/.nox",
+    "**/.pants.d",
+    "**/.svn",
+    "**/.tox",
+    "**/.venv",
+    "**/__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "venv",
+]
+venvPath = "."
+venv = ".venv"
+reportMissingImports = true
+reportMissingTypeStubs = false
+pythonVersion = "3.13"
+pythonPlatform = "All"
