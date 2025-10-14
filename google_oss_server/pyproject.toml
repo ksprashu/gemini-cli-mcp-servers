@@ -1,0 +1,8 @@
+[project]
+name = "google_oss_server"
+version = "0.1.0"
+description = "An MCP server for making projects Google OSS compliant."
+dependencies = [
+    "fastmcp>=2.0.0,<3.0.0",
+    "uvicorn[standard]",
+]
