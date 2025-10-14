@@ -1,0 +1,8 @@
+[project]
+name = "superagent_server"
+version = "0.1.0"
+description = "An MCP server that acts as a master strategist AI developer."
+dependencies = [
+    "fastmcp>=2.0.0,<3.0.0",
+    "uvicorn[standard]",
+]
