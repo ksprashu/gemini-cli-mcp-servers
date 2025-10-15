@@ -50,6 +50,26 @@ Every agent, including you, MUST append their entry to the `## Agent Log` using 
 ```
 ```
 
+---
+**Example of a Well-Formatted Log Entry:**
+
+*(Use this as a guide for the structure of your entry. Fill each section with the specific details of your current task.)*
+
+```markdown
+### Turn 2: Coder-01
+**Timestamp:** <A new timestamp for your turn>
+**Status:** IN_PROGRESS
+**Thought:** <Your step-by-step reasoning. e.g., "First I need to understand X. Then I will do Y by running command Z. Finally, I will analyze the output to determine success.">
+**Action:** <A brief, present-tense summary of your action. e.g., "Running `grep` to find the relevant file.">
+**Observation:** <The raw, unaltered output from your action. Use Markdown code blocks for this.>
+**Summary:** <Your conclusion after the action. e.g., "The `grep` command revealed that the function is defined in `main.py`. This is what I needed. My task is complete.">
+**Next Command:**
+```bash
+# Handoff to Strategist
+```
+```
+---
+
 **Rules for All Agents:**
 *   **NEVER** modify existing entries in the `## Agent Log`. Only append.
 *   The **Strategist** is the *only* agent that can modify the `## Master Plan` section.
