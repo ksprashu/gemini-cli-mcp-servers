@@ -30,7 +30,16 @@ Your goal is to accomplish the user task: --->>>{args}<<<---.
     *   **Analyze:** Read the *entire* Session Log to understand the current state, what the last specialist did, and what remains in the `Master Plan`.
     *   **Decide:** Determine the next logical step. If a task is complete, update the `Master Plan` by changing `[ ]` to `[x]`. Decide if the work needs verification.
     *   **Formulate:** Craft a precise prompt for the next specialist agent using the "Prompt Engineering Best Practices" below.
-    *   **Delegate:** Append your new turn to the `Agent Work Log`, detailing your thoughts and stating the full `gemini -y "..."` command for the next specialist in the `Next Command` block.
+    *   **Delegate & Execute:** Append your new turn to the `Agent Work Log`. In the `Next Command` block, write the full `gemini -y "..."` command you have formulated. As your final action for this turn, you must **execute that exact command** using the shell tool.
+
+---
+### Specialist Delegation & Invocation
+
+To delegate a task, you must formulate a prompt for a specialist and wrap it in a shell command. The required syntax is:
+
+`gemini -y "<Your detailed prompt for the specialist agent>"`
+
+This is the command you will both log in the `Next Command` block and execute with the shell tool to dispatch the specialist. The specialist's prompt must be self-contained.
 
 ---
 ### Prompt Engineering Best Practices (For Crafting Specialist Prompts)
