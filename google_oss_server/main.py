@@ -1,18 +1,30 @@
-from fastmcp import FastMCP, Message, ToolContext
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-mcp = FastMCP(
-    title="Google OSS Compliance Server",
-    description="Generates a detailed prompt to make a project compliant with Google's open-source standards.",
-    version="0.1.0",
-)
+
+from fastmcp import FastMCP
+
+mcp = FastMCP("Google OSS Repo Checker")
+
 
 @mcp.prompt
-async def google_oss(context: ToolContext) -> Message:
+async def google_oss() -> str:
     """
     Generates a detailed prompt for Gemini CLI to make the current project
     Google Open Source compliant.
     """
-    instructions_for_gemini = '''
+    instructions_for_gemini = """
 You are about to make the current project compliant with Google's Open Source standards. Follow these steps precisely.
 
 **1. Define Target Project:**
@@ -58,5 +70,5 @@ Example command: `git clone https://github.com/google/new-project /Users/ksprash
 - Remove the temporary directory containing the cloned template repo.
 
 Execute this plan step-by-step, explaining each major action before you take it.
-'''
-    return Message(content=instructions_for_gemini.strip())
+"""
+    return instructions_for_gemini.strip()
