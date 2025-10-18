@@ -73,7 +73,7 @@ A powerful orchestrator agent that follows an "Analyze -> Decide -> Formulate ->
 
 ## Disclaimer
 
-This is not an officially supported Google product. This project is provided for reference and educational purposes only.
+This is not an officially supported Google product.
 
 ## License
 
