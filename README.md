@@ -69,6 +69,32 @@ A powerful orchestrator agent that follows an "Analyze -> Decide -> Formulate ->
     > /superagent 'your high-level goal here'
     ```
 
+**Important Setup for SuperAgent:**
+
+The SuperAgent requires a dedicated temporary directory for its operations. Please create the following directory in your home directory:
+
+```bash
+mkdir -p ~/tmp/gemini-tasks/
+```
+
+Additionally, you must inform the Gemini CLI about this new directory so it can write scratch files outside the current working directory. You can do this in one of two ways:
+
+1.  **Using the Gemini CLI command:**
+    ```bash
+    /directory add ~/tmp/gemini-tasks/
+    ```
+2.  **Manually editing `settings.json`:**
+    Add the following entry to your `settings.json` file, located in your `.gemini/` folder:
+    ```json
+      "context": {
+        "ignore": [],
+        "includeDirectories": [
+          "/Users/ksprashanth/tmp/gemini-tasks"
+        ]
+      },
+    ```
+    (Note: Replace `/Users/ksprashanth/tmp/gemini-tasks` with the actual absolute path to your `gemini-tasks` directory if it's different.)
+
 ---
 
 ## Disclaimer
