@@ -1,2 +1,3 @@
 # Virtual Environment
 .venv/
+\n# Python cache\n__pycache__/\n*.pyc\n.ruff_cache/
