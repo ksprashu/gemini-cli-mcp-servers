@@ -14,25 +14,14 @@
 
 from typing import Annotated
 
-from fastmcp import FastMCP, Message, ToolContext
+from fastmcp import Context, FastMCP
 from pydantic import Field
 
-mcp = FastMCP(
-    title="PromptGen Server",
-    description="An MCP server to refine user prompts, to be used with Gemini CLI.",
-    version="0.1.0",
-)
+mcp = FastMCP("PromptGen Server")
+
 
 @mcp.prompt
-async def prompt(
-    context: ToolContext,
-    prompt: Annotated[
-        str,
-        Field(
-            description="The user's original prompt. This can be a multi-line string."
-        ),
-    ],
-) -> Message:
+async def promptgen(prompt: str) -> str:
     """
     Takes a user's prompt (which can be multi-line) and refines it.
 
@@ -42,7 +31,7 @@ async def prompt(
     Returns:
         A refined prompt.
     """
-    prompt_engineering_instructions = '''## Prompt Engineering / Prompt Generation
+    prompt_engineering_instructions = """## Prompt Engineering / Prompt Generation
 
 When creating or building any prompt, use the following structure design effective prompts.
 
@@ -55,7 +44,7 @@ When creating or building any prompt, use the following structure design effecti
 7. Immediate Task Description - After all that context, clearly state what you want RIGHT NOW. This focuses the Agent's attention on the specific deliverable.
 8. Thinking Step-by-Step - Add "Think about your answer first before responding" or "Take a deep breath and work through this systematically." This activates the Agent's reasoning capabilities.
 9. Output Formatting - Specify EXACTLY how you want the output structured. Use XML tags, markdown, bullet points, whatever you need. Be explicit.
-10. Prefilled Response (Advanced) - Start the agent's response for them. This technique guides the output style and can dramatically improve quality.'''
+10. Prefilled Response (Advanced) - Start the agent's response for them. This technique guides the output style and can dramatically improve quality."""
 
     # This is the "meta-prompt" that will be generated.
     # It instructs an AI to use the rules to refine the user's original input.
@@ -63,7 +52,7 @@ When creating or building any prompt, use the following structure design effecti
 You are a world-class expert in prompt engineering for large language models.
 Your task is to take a user's simple, raw prompt and rewrite it into a detailed, effective prompt that will yield superior results.
 
-You must use the following instructions to craft the new prompt. The user's original input should be incorporated into the "Immediate Task Description" part of the new prompt you create.
+You must use the following instructions to craft the new prompt. The user's original input should be incorporated into the "Immediate Task Description" part of the new prompt you create. You don't need to output the bullets (or headings). The new, rewritten prompt should contain the structure as per the best practice, but doesn't need to rigidly have the instructions as bullets / headings. It should read like an excellent, world-class, contiguous and well readable prompt. Also any instruction that is not needed can of course be ignored. It is a best practice, a guideline, and not a rule. Remove all placeholders and empty sections. Verify that the prompt is a good, whole, standalone prompt before giving it to the user.
 
 ---
 **PROMPT REFINEMENT INSTRUCTIONS:**
@@ -77,4 +66,4 @@ You must use the following instructions to craft the new prompt. The user's orig
 Rewrite the user's raw prompt into a new, comprehensive prompt based on the instructions provided. The new prompt should be a complete, self-contained set of instructions for another AI. Structure the output clearly, following the 10-point framework. Fill in the sections with your expert suggestions on what would make the prompt better, but leave placeholders like `[Insert Background Data Here]` or `[Provide Example 1 Here]` where the user needs to supply specific information.
 """
 
-    return Message(content=refined_prompt.strip())
+    return refined_prompt.strip()
