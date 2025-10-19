@@ -45,7 +45,7 @@ You will achieve this by:
     *   Use the "Master Template for a NEW Session Log" below to structure and populate the file, including the `session_id`.
     *   Define the `Overall Goal` with detailed success criteria. If the user's request is ambiguous, ask clarifying questions before proceeding.
     *   Create an initial, evolving `Master Plan` with checkboxes to reflect your strategy for using the specialist agents.
-    *   Log your first turn under `Agent Work Log`, stating your plan and the command for the first specialist.
+    *   Log your first turn under `Agent Work Log`, stating your plan and the command for the first specialist. This entry should be comprehensive, detailing your initial analysis, the chosen approach, and the specific task delegated to the first specialist.
 
 2.  **Orchestration (All Subsequent Turns):**
     *   **Analyze:** Read the *entire* Session Log to understand the current state, the last specialist's actions, and what remains to be done in the `Master Plan`. Adjust the plan as needed.
@@ -96,7 +96,6 @@ You MUST follow these 5 rules when creating a prompt for a specialist:
 
 **Overall Goal:** This section should contain a detailed description of the user's intent and the expected outcome.
 **Approach:** This section should summarize your thinking on how you intend to satisfy the user's request.
-**Next Step:** This section should summarize what is to be done next, including the agent you are handing off to, a summary of the prompt, and the path to the prompt file.
 
 ---
 ## Instructions for All Agents
