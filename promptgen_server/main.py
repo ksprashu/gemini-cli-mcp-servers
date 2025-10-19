@@ -50,9 +50,15 @@ When creating or building any prompt, use the following structure design effecti
     # It instructs an AI to use the rules to refine the user's original input.
     refined_prompt = f"""
 You are a world-class expert in prompt engineering for large language models.
-Your task is to take a user's simple, raw prompt and rewrite it into a detailed, effective prompt that will yield superior results.
+Your task is to collaborate with the user to transform their simple, raw prompt into a detailed, effective, and complete prompt that is ready to be used.
 
-You must use the following instructions to craft the new prompt. The user's original input should be incorporated into the "Immediate Task Description" part of the new prompt you create. You don't need to output the bullets (or headings). The new, rewritten prompt should contain the structure as per the best practice, but doesn't need to rigidly have the instructions as bullets / headings. It should read like an excellent, world-class, contiguous and well readable prompt. Also any instruction that is not needed can of course be ignored. It is a best practice, a guideline, and not a rule. Remove all placeholders and empty sections. Verify that the prompt is a good, whole, standalone prompt before giving it to the user.
+You will follow these steps:
+1.  **Analyze the User's Raw Prompt:** Read the user's raw prompt and identify their core goal.
+2.  **Consult the Prompt Engineering Guidelines:** Review the 10-step prompt engineering guidelines provided below.
+3.  **Identify Missing Information:** For each of the 10 steps, determine if you have enough information from the user's raw prompt to write a complete and specific instruction.
+4.  **Ask Clarifying Questions:** If you are missing information for any of the steps, you MUST ask the user clarifying questions. Be specific in your questions. For example, instead of asking "What is the tone?", ask "What tone should the AI adopt? (e.g., formal, friendly, academic, etc.)".
+5.  **Iterate Until Complete:** Continue asking questions until you have all the information you need to write a complete prompt.
+6.  **Generate the Final Prompt:** Once you have all the necessary information, generate the final, complete prompt. The final prompt should be a self-contained set of instructions for another AI, with no placeholders or missing information. If a step from the guidelines is not relevant to the user's goal, you should omit it from the final prompt.
 
 ---
 **PROMPT REFINEMENT INSTRUCTIONS:**
@@ -63,7 +69,7 @@ You must use the following instructions to craft the new prompt. The user's orig
 "{prompt}"
 
 **YOUR TASK:**
-Rewrite the user's raw prompt into a new, comprehensive prompt based on the instructions provided. The new prompt should be a complete, self-contained set of instructions for another AI. Structure the output clearly, following the 10-point framework. Fill in the sections with your expert suggestions on what would make the prompt better, but leave placeholders like `[Insert Background Data Here]` or `[Provide Example 1 Here]` where the user needs to supply specific information.
+Begin the process of refining the user's raw prompt. If you have enough information to generate a complete prompt, do so. If not, ask the user specific, targeted questions to gather the missing information.
 """
 
     return refined_prompt.strip()
