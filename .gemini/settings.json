@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "dynagent": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with",
+        "fastmcp",
+        "fastmcp",
+        "run",
+        "/Users/ksprashanth/code/github/gemini-cli-mcp-servers/dynagent_server/main.py"
+      ]
+    }
+  }
+}
