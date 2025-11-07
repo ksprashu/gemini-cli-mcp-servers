@@ -43,20 +43,7 @@ An MCP server to help refine user prompts based on a set of prompt engineering b
     > /promptgen 'your simple prompt idea'
     ```
 
-### 2. Google OSS Complier (`/google-oss`)
-
-Generates a detailed prompt that instructs Gemini CLI to perform the steps necessary to make a project compliant with Google's open-source standards (adding LICENSE, CONTRIBUTING.md, source headers, etc.).
-
-*   **To Install:**
-    ```bash
-    fastmcp install gemini-cli google_oss_server/main.py --name google-oss
-    ```
-*   **Usage:**
-    ```
-    > /google-oss
-    ```
-
-### 3. SuperAgent (`/superagent`)
+### 2. SuperAgent (`/superagent`)
 
 A powerful orchestrator agent that follows an "Analyze -> Decide -> Formulate -> Delegate" loop to accomplish complex tasks by dispatching specialist agents.
 
